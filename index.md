@@ -43,3 +43,15 @@ p<-ggplot(data.melt,aes(x=MONTHDATE, y=value,group=variable,colour=variable))+ge
 + theme(axis.text.x = element_text(angle = -90, hjust = 1))
 ```
 
+
+--- .class #id 
+
+## Reference
+
+
+Shiny App on Server: 
+- http://tswenzel.shinyapps.io/Coursera/
+
+Server.R and Ui.file as well as Slidify presentation
+- https://github.com/tswenzel/DataProductsAssignment
+
