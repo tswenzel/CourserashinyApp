@@ -78,6 +78,9 @@ p
 Shiny App on Server: 
 - http://tswenzel.shinyapps.io/Coursera/
 
-Server.R and Ui.file as well as Slidify presentation
+Server.R and Ui.file
+- https://github.com/tswenzel/CourserashinyApp
+
+Slidify presentation
 - https://github.com/tswenzel/DataProductsAssignment
 
