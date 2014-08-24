@@ -33,17 +33,44 @@ knit        : slidify::knit2slides
 ## Example
 
 For example, the UI selection "All" firms for the entire date range, would create the graph using the following R code
+```{r setup, echo=FALSE}
 
-```{r, echo=TRUE,eval=FALSE,error=FALSE}
-tabledta<-summaryBy(y1+y2~MONTHDATE+x1,data=plotData,FUN=sum,keep.names=TRUE)
+library(shiny)
+library(ggplot2)
+library(doBy)
+library(reshape2)
+library(stringr)
+testData <-data.frame(firm=rep(LETTERS[1:10],each=500),
+                       date=as.Date("2012-01-01")+1:500,
+                       y1=sample(1:100,50),y2=sample(1:100,50),y3=sample(1:100,50),x1=sample(1:2))
+testData1<-testData
+testData1$X<-NULL
+testData1$date<-as.Date(testData1$date)
+testData1$date <- format(testData1$date,'%Y-%m-%d')
+testData1$MONTHDATE = as.Date(paste(paste0('20',str_sub(strftime(testData1$date,'%y')), start= -2),strftime(testData1$date,'%m'),'01',sep='-'))
+testData1$MONTHDATE <- format(testData1$MONTHDATE,'%Y-%m-%d')
+
+
+```
+
+
+```{r, echo=TRUE}
+tabledta<-summaryBy(y1+y2~MONTHDATE+x1,data=testData1,FUN=sum,keep.names=TRUE)
 data.melt <- melt(tabledta,id.vars=c('MONTHDATE','x1'),all=TRUE)
-p<-ggplot(data.melt,aes(x=MONTHDATE, y=value,group=variable,colour=variable))+geom_line()
-+facet_wrap(~x1,scales='free_y',ncol=1)+ylab("value of y1 and y2")
-+ theme(axis.text.x = element_text(angle = -90, hjust = 1))
+p<-ggplot(data.melt,aes(x=MONTHDATE, y=value,group=variable,colour=variable))+geom_line()+facet_wrap(~x1,scales='free_y',ncol=1)+ylab("value of y1 and y2")+ theme(axis.text.x = element_text(angle = -90, hjust = 1))
 ```
 
 
 --- .class #id 
+
+## Graph
+```{r}
+p
+```
+
+
+--- .class #id 
+
 
 ## Reference
 

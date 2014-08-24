@@ -83,12 +83,24 @@
   <article data-timings="">
     <p>For example, the UI selection &quot;All&quot; firms for the entire date range, would create the graph using the following R code</p>
 
-<pre><code class="r">tabledta&lt;-summaryBy(y1+y2~MONTHDATE+x1,data=plotData,FUN=sum,keep.names=TRUE)
+<pre><code class="r">tabledta&lt;-summaryBy(y1+y2~MONTHDATE+x1,data=testData1,FUN=sum,keep.names=TRUE)
 data.melt &lt;- melt(tabledta,id.vars=c(&#39;MONTHDATE&#39;,&#39;x1&#39;),all=TRUE)
-p&lt;-ggplot(data.melt,aes(x=MONTHDATE, y=value,group=variable,colour=variable))+geom_line()
-+facet_wrap(~x1,scales=&#39;free_y&#39;,ncol=1)+ylab(&quot;value of y1 and y2&quot;)
-+ theme(axis.text.x = element_text(angle = -90, hjust = 1))
+p&lt;-ggplot(data.melt,aes(x=MONTHDATE, y=value,group=variable,colour=variable))+geom_line()+facet_wrap(~x1,scales=&#39;free_y&#39;,ncol=1)+ylab(&quot;value of y1 and y2&quot;)+ theme(axis.text.x = element_text(angle = -90, hjust = 1))
 </code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Graph</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">p
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-2.png" alt="plot of chunk unnamed-chunk-2"> </p>
 
   </article>
   <!-- Presenter Notes -->
@@ -139,8 +151,14 @@ p&lt;-ggplot(data.melt,aes(x=MONTHDATE, y=value,group=variable,colour=variable))
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='Reference'>
+        data-slide=4 title='Graph'>
          4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Reference'>
+         5
       </a>
     </li>
   </ul>

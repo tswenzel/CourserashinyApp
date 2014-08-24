@@ -35,16 +35,28 @@ knit        : slidify::knit2slides
 For example, the UI selection "All" firms for the entire date range, would create the graph using the following R code
 
 
+
+
 ```r
-tabledta<-summaryBy(y1+y2~MONTHDATE+x1,data=plotData,FUN=sum,keep.names=TRUE)
+tabledta<-summaryBy(y1+y2~MONTHDATE+x1,data=testData1,FUN=sum,keep.names=TRUE)
 data.melt <- melt(tabledta,id.vars=c('MONTHDATE','x1'),all=TRUE)
-p<-ggplot(data.melt,aes(x=MONTHDATE, y=value,group=variable,colour=variable))+geom_line()
-+facet_wrap(~x1,scales='free_y',ncol=1)+ylab("value of y1 and y2")
-+ theme(axis.text.x = element_text(angle = -90, hjust = 1))
+p<-ggplot(data.melt,aes(x=MONTHDATE, y=value,group=variable,colour=variable))+geom_line()+facet_wrap(~x1,scales='free_y',ncol=1)+ylab("value of y1 and y2")+ theme(axis.text.x = element_text(angle = -90, hjust = 1))
 ```
 
 
 --- .class #id 
+
+## Graph
+
+```r
+p
+```
+
+![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-2.png) 
+
+
+--- .class #id 
+
 
 ## Reference
 

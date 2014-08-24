@@ -1,3 +1,8 @@
 base
+doBy
 ggplot2
+MASS
 reshape2
+shiny
+stringr
+survival
